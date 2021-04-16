@@ -5,7 +5,6 @@ import com.springTest.springTest.service.ProductService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,13 +17,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.Arrays;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.ignoreStubs;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@ExtendWith({SpringExtension.class}) // mówimy że testujemy springa
+@ExtendWith({SpringExtension.class})
 @SpringBootTest
 @AutoConfigureMockMvc
 class ProductControllerTest {
@@ -37,7 +34,7 @@ class ProductControllerTest {
 
 
     @Test
-    @DisplayName("Tetst product found - GET /product/1")
+    @DisplayName("Test product found - GET /product/1")
     public void testGETProductFound() throws Exception {
         // Given
         Product mockProduct = new Product(1, "Product", "Opis", 1, 1);
@@ -49,7 +46,7 @@ class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("Tetst product found - GET /product")
+    @DisplayName("Test product found - GET /product")
     public void testGETALLProductsFound() throws Exception {
         // Given
         Product mockProduct = new Product(1, "Product", "Opis", 1, 1);
