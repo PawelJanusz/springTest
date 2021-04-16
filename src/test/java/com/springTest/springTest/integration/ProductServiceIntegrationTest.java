@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-@ExtendWith({SpringExtension.class}) // mówimy że testujemy springa
+@ExtendWith({SpringExtension.class})
 @SpringBootTest
 @AutoConfigureMockMvc
 class ProductServiceIntegrationTest {
@@ -46,6 +46,7 @@ class ProductServiceIntegrationTest {
     public void tearDown(){
         productRepository.deleteAll();
     }
+
     @Test
     @DisplayName("Tetst product found - GET /product/1")
     public void testGETProductFound() throws Exception {

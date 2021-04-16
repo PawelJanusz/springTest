@@ -17,7 +17,7 @@ import java.util.Collection;
 import static org.mockito.Mockito.doReturn;
 
 
-@ExtendWith({SpringExtension.class}) // mówimy że testujemy springa
+@ExtendWith({SpringExtension.class})
 @SpringBootTest
 class ProductServiceTest {
 
@@ -33,10 +33,8 @@ class ProductServiceTest {
         //given
         Product mockProduct = new Product(1, "Nazwa", "Opis", 1, 1);
         doReturn(mockProduct).when(productRepository).findProductById(1);
-
         //when
         Product receivedProduct = productService.findById(1);
-
         //then
         Assertions.assertNotNull(receivedProduct);
     }

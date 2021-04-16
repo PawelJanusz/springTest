@@ -16,9 +16,8 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith({SpringExtension.class}) // mówimy że testujemy springa
+@ExtendWith({SpringExtension.class})
 @SpringBootTest
 class ProductRepositoryTest {
 
@@ -36,14 +35,14 @@ class ProductRepositoryTest {
     @Test
     @DisplayName("Test product not found with non existing ID") //opis testu
     public void testProductNotFoundWithNonExistingId(){
-
         //when
         Product obtainProduct = productRepository.findProductById(10000);
         //then
         Assertions.assertNull(obtainProduct);
     }
+
     @Test
-    @DisplayName("Test product added succesfully")
+    @DisplayName("Test product added successfully")
     public void testProductAddedSuccessfully(){
         //given
         Product expectedProduct = new Product("Name", "Opis", 1);
