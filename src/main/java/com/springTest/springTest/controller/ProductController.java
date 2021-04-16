@@ -1,12 +1,10 @@
 package com.springTest.springTest.controller;
 
 
+import com.springTest.springTest.model.Product;
 import com.springTest.springTest.service.ProductService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
@@ -27,4 +25,32 @@ public class ProductController {
     public ResponseEntity<?> getProducts(){
         return ResponseEntity.ok().body(productService);
     }
+
+    @PostMapping("/addProduct")
+    public Product saveProducts(@ModelAttribute Product newProduct){
+        Product product = new Product();
+        product.setName(newProduct.getName());
+        product.setDescription(newProduct.getDescription());
+        product.setQuantity(newProduct.getQuantity());
+        product.setVersion(newProduct.getVersion());
+        productService.saveProduct(product);
+        return product;
+    }
+    @PutMapping("{id}")
+    public ResponseEntity<?> productUpdate(@PathVariable("id") Integer id, @RequestBody Product product){
+        Product product1 = productService.update(product, id);
+        if (product1 != null) {
+            return ResponseEntity.ok().body(product1);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/deleteProduct")
+    public Product productDelete(Integer id){
+        Product product = productService.findById(id);
+        productService.deleteProduct(id);
+        return product;
+    }
+
+
 }
